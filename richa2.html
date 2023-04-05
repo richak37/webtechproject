@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HTML_FORMS</title>
+
+    <script type="text/javascript">
+      function f1() {
+        // Declarations
+
+        var n = document.getElementById("fname");
+        var em = document.getElementById("em1");
+        var em_format = /^([a-z0-9\.-]+)@([a-z0-9-]+)\.([a-z]+)(\.[a-z]+)?$/;
+        var pass = document.getElementById("m_pwd");
+        var pass_format = /^([a-zA-Z]{6}+)([0-9]{2}+)([!@#$%&*]{1}+)$/;
+        var CS = "";
+        var x = document.getElementsByName("MEMBER");
+        for (var i = 0; i < x.length; i++) {
+          if (x[i].checked == true) {
+            MEM = x[i].value;
+          }
+        }
+
+        var CS = "";
+        var y = document.getElementsByName("CUISINE");
+        for (var i = 0; i < y.length; i++) {
+          if (y[i].checked == true) {
+            CS = CS + " " + y[i].value;
+          }
+        }
+
+        var table1 = "";
+        var a = document.getElementById("tab1");
+        var table1 = a.options[a.selectedIndex].value;
+
+        var date = document.getElementById("dat1");
+
+        // Validations
+
+        if (n.value.trim() == "") {
+          alert("Please enter your Name");
+          return false;
+        } else if (em.value.trim() == "") {
+          alert("Please enter your Email address");
+          return false;
+        } else if (em_format.test(em.value) == false) {
+          alert("Invalid Email address");
+          return false;
+        } else if (pass.value.trim() == "") {
+          alert("Password cannot be empty");
+          return false;
+        } else if (pass_format.test(pass.value) == false) {
+          alert(
+            "Password must contain 6 characters, 2 numbers and 1 special character"
+          );
+          return false;
+        } else if (MEM == "") {
+          alert("Please select the number of members");
+          return false;
+        } else if (CS == "") {
+          alert("Please select your favourite cuisine");
+          return false;
+        } else if (table1 == "") {
+          alert("Select your City");
+          return false;
+        } else if (date== "") {
+          alert("Please enter your date of booking");
+          return false;
+        }
+
+        // Print
+        else {
+          alert("Form validated successfully");
+          document.write("Name: " + n.value + "<br>");
+          document.write("Email: " + em.value + "<br>");
+          document.write("Password:" + pass.value + "<br>");
+          document.write("cuisine: " + CS + "<br>");
+          document.write("Favourite Sports: " + + "<br>");
+          document.write("table-type: " + table1 + "<br>");
+          document.write("booking date: " + date.value + "<br>");
+          return true;
+        }
+      }
+    </script>
+
+
+</head>
+<body background="04.jpg" style="color:blanchedalmond">
+  <center>
+  
+        <div>
+        <h1 style="text-align:center;background-color:rgb(17, 33, 27);color:rgb(245, 235, 255)"> PREEBOOK ORDER FORM </h1>
+    </div>
+<form onsubmit="f1()">
+
+    <div>
+    <label >
+       <p style =" color: aliceblue;"> NAME:</p>
+    </label>
+   
+    <input type="text" id="fname" name="fname" placeholder="ENTER NAME IN CAPITAL" autofocus autocomplete="ON" required>
+
+    <label>
+        <p style =" color: aliceblue;">STATE:</p>
+    </label>
+    <input style="text-align: center;"type="text" value="GOA" readonly> <br><br>
+   
+    </div>
+    <br>
+  
+    
+        <div style="margin:0.4rem; font-family: sans-serif;border:2px solid rgb(146, 255, 222);height:8rem;width:24rem">
+            <br>
+          <div style="color:beige; text-align: center;">SELECT THE APPROX. COUNT OF MEMBERS </div>
+          <br>
+          
+          <div>
+            <input type="radio" name="MEMBER" id="0" value="0-5">0-5<br>
+
+            <input type="radio" name="MEMBER" id="5" value="5-10">5-10<br>
+
+            <input type="radio" name="MEMBER" id="10" value="10-15">10-15<br>
+
+          
+        
+        </div>
+        <BR><br>
+        <div style="margin:0.4rem; font-family: sans-serif;border:2px solid rgb(146, 255, 222);height:8rem;width:24rem">
+            <br>
+          <div style="color:beige; text-align: center;">PREFERRED CUISINE</div>
+          <br>
+          
+          <div>
+            <input type="checkbox" name="CUISINE" id="C" value="ITALIAN" >ITALIAN<br>
+            <input type="checkbox" name="CUISINE" id="M" value="INDIAN"checked>INDIAN<br>
+            <input type="checkbox" name="CUISINE" id="M2" value="CHINESE">CHINESE<br>
+            <input type="checkbox" name="CUISINE" id="E" value="THAI">THAI<br>
+        </div>
+
+
+        <br><br>
+
+        <DIV>
+            <div  style="margin:0.4rem; font-family: sans-serif;border:2px solid rgb(146, 255, 222);height:8rem;width:18rem">
+              <br>
+            <label style="text-align:justify"> SELECT THE TYPE OF TABLE </label>  
+            <select size="1" id="tab1">  
+            <option value = "JOINED"> JOINED
+            </option>  
+            <option value = "ROUND"selected> ROUND 
+            </option>  
+            <option value = "RECTANGLE" > RECTANGLE  
+            </option>  
+            <option value = "ROTATING"> ROTATING
+            </option>  
+            </select> 
+        </div> 
+        
+<br>
+        <div style="margin:0.4rem; font-family: sans-serif;border:2px solid rgb(146, 255, 222);height:7rem;width:18rem">
+            <div class="_email">
+                <label >ENTER YOUR EMAIL:</label>
+                <input type="email" id="em1" name="email" style="background-color:rgb(255, 255, 255);color:black" required>
+              </div>
+              <br>
+              <div>
+                <label>ENTER YOUR PASSWORD:</label>
+                <input type="password" id="m_pwd" name="password" style="background-color:rgb(255, 255, 255);color:black" required>
+              </div>
+        </div>
+        <br>
+
+        <div style="margin:0.4rem; font-family: sans-serif;border:2px solid rgb(146, 255, 222);height:4rem;width:18rem">
+            <label >ENTER YOUR BOOKING DATE:
+            </label>
+            <input type="date" id="dat1" style="background-color:rgb(255, 255, 255);color:black">
+          </div>
+        </div>
+        <br>
+
+        <div style="margin:0.4rem; font-family: sans-serif;border:2px solid rgb(146, 255, 222);height:6rem;width:18rem">
+        <div>
+        
+              <label style="margin-right:1.8rem">ENTER A COLOR FOR THE AMBIENCE THEME:
+              </label>
+              <input type="color" style="color:black">
+            </div>
+    
+            <br>
+            <div style="color:rgb(255, 243, 207)">
+              <label style="margin-right:1.8rem">UPLOAD ID PROOF:
+              </label>
+              <input type="file">
+            </div>
+          </div>
+<br>
+
+          <div style="margin:0.4rem; font-family: sans-serif;border:2px solid rgb(146, 255, 222);height:rem;width:18rem">
+        
+          
+              <label style="margin-right:1.8rem">ARRIVAL TIME (10-23):</label>
+              <input type="number" style="background-color:rgb(255, 255, 255);color:black" value="6"min="2" max="8">
+            
+            <br><br>
+            
+              <label>SELECT YOUR MARKS RANGE(between 10 to 35): </label>
+              <input type="range" min="10" max="35" step="5">
+            
+          </div>
+<br>
+          
+      <div style="margin:0.4rem; font-family: sans-serif;border:2px solid rgb(146, 255, 222);height:rem;width:18rem">
+        <input type="submit" style="background-color:rgb(255, 255, 255);color:black" >
+
+        <input type="reset"style="background-color:rgb(255, 255, 255);color:black" >
+      </div
+</form>
+</center>
+<p disabled>
+CREATED BY:RICHA KERKAR   ROLL NUMBER:20CO37.
+</p>
+</body>
+</html>
